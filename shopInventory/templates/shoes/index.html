@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Shoes</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th></th>
+    <th>Type of Shoe</th>
+  </tr>
+  {% for location in locations %}
+  <tr>
+    <td><a href="/shoe/{{ shoe.id }}"> {{shoe.name}} </a></td>
+    <td>|</td>
+    <td>{{ shoe.category }}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}

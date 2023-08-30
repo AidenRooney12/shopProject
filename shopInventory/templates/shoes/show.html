@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1> {{shoes.name}} </h1>
+
+<p>Category: {{ shoe.category }}</p>
+
+<h3>Visited by:</h3>
+<ul>
+    {% shoe in shoes %}
+    <li>{{shoe.name}}</li>
+    {% endfor %}
+</ul>
+
+
+{% endblock %}

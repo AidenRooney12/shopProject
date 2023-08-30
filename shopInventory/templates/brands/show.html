@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1> {{brand.name}} </h1>
+
+<h3>Visited:</h3>
+<ul>
+    {% for brand in brands %}
+    <li>{{brand.name}}</li>
+    {% endfor %}
+</ul>
+
+{% endblock %}
