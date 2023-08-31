@@ -1,16 +1,20 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1> {{shoes.name}} </h1>
 
-<p>Category: {{ shoe.category }}</p>
+<h1> {{shoe.name}} </h1>
 
-<h3>Visited by:</h3>
-<ul>
-    {% shoe in shoes %}
-    <li>{{shoe.name}}</li>
-    {% endfor %}
-</ul>
+<p>Edit</p>
+<a href="/shoes/{{shoe.id}}/edit">
+    <button>Edit Shoe</button>
+</a>
+
+<p>Delete</p>
+<a href="/shoes/{{shoe.id}}/delete">
+    <button>Delete Shoe</button>
+
+</a>
+
 
 
 {% endblock %}

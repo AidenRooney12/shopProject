@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1> Add New Shoe</h1>
+
+
+<form action="/shoes" method="POST">
+
+    <div>
+        <label for="">NAME</label>
+        <input type="text" name="name">
+    </div>
+
+    <div>
+        <label for="">CATEGORY</label>
+        <input type="text" name="category">
+    </div>
+
+    <div>
+        <label for="">BUYING COST</label>
+        <input type="text" name="buyingCost">
+    </div>
+
+    <div>
+        <label for="">SELLING COST</label>
+        <input type="text" name="sellingCost">
+    </div>
+
+    <div>
+        <label for="">NO OF SHOES</label>
+        <input type="text" name="numberOfShoes">
+    </div>
+
+    <div>
+        <label for="">NAME</label>
+        <select name="brand" id="">
+            {% for brand in brands %}
+            <option value="{{brand.id}}">{{brand.name}}</option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <input type="submit" value="Save">
+
+</form>
+
+
+
+{% endblock %}

@@ -3,7 +3,7 @@ from models.brands import Brand
 
 
 def save(brand):
-    sql = "INSERT INTO brand( name ) VALUES ( %s ) RETURNING id"
+    sql = "INSERT INTO brands ( name ) VALUES (%s) RETURNING id"
     values = [brand.name]
     results = run_sql(sql, values )
     brand.id = results[0]['id']
@@ -31,7 +31,7 @@ def select(id):
 
 
 def delete_all():
-    sql = "DELETE * FROM brands "
+    sql = "DELETE FROM brands"
     run_sql(sql)
 
 
@@ -41,16 +41,15 @@ def delete(id):
     run_sql(sql, values)
 
 
-
-def shoes_per_brand(brand):
-    shoes = []
-    sql = "SELECT * FROM shoes WHERE brand_id = %s"
-    values = [brand.id]
+def brands_by_shoe(shoe):
+    brands = []
+    sql = "SELECT * FROM brands WHERE shoe_id = %s"
+    values = [shoe.id]
     results = run_sql(sql, values)
     for row in results:
-        shoes = shoes(row['brand'])
-        shoes.append(brand)
-    return shoes
+        brand = Brand(row['name'], row['shoe_id'], row['id'])
+        brands.append(brand)
+    return brands
 
 
 

@@ -8,13 +8,39 @@
     <th>Name</th>
     <th></th>
     <th>Type of Shoe</th>
+    <th></th>
+    <th>Buying Cost</th>
+    <th></th>
+    <th>Selling Cost</th>
+    <th></th>
+    <th>Number of Shoes</th>
+    <th></th>
+    <th>Brand Of Shoes</th>
+
   </tr>
-  {% for location in locations %}
+  {% for shoe in shoes %}
   <tr>
-    <td><a href="/shoe/{{ shoe.id }}"> {{shoe.name}} </a></td>
+    <td><a href="/shoes/{{shoe.id}}"> {{shoe.name}} </a></td>
     <td>|</td>
     <td>{{ shoe.category }}</td>
+    <td>|</td>
+    <td>{{ shoe.buyingCost }}</td>
+    <td>|</td>
+    <td>{{ shoe.sellingCost }}</td>
+    <td>|</td>
+    <td>{{ shoe.numberOfShoes }}</td>
+    <td>|</td>
+    <td>{{ shoe.brand.name }}</td>
+
   </tr>
   {% endfor %}
 </table>
+
+<a href="/shoes/new">
+    <button>ADD NEW SHOE</button>
+
+    <button> DELETE SHOE </button>
+
+    <button> EDIT SHOE</button>
+</a>
 {% endblock %}

@@ -13,6 +13,19 @@ def brands():
 
 @brands_blueprint.route("/brands/<id>")
 def show(id):
-    brands = brandRepository.select(id)
+    brand = brandRepository.select(id)
     shoes = shoeRepository.shoes_by_brand(brands)
-    return render_template("locations/show.html", brand = brand , shoe = shoe)
+    return render_template("locations/show.html", brand = brand , shoes = shoes)
+
+
+@brands_blueprint.route("/brands", methods=['POST'])
+def create_shoe():
+    name = request.form['name']
+    brand = Brand(name)
+    brandRepository.save(brand)
+    return redirect('/brands')
+
+@brands_blueprint.route("/brands/<id>/delete", methods=['POST'])
+def delete_brands(id):
+    brandRepository.delete(id)
+    return redirect('/brands')
